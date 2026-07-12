@@ -15,6 +15,36 @@ public static class PlayerControl_SetKillTimer
     }
 }
 
+[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.ReportDeadBody))]
+public static class PlayerControl_ReportDeadBody
+{
+    // Prefix patch to snapshot minimap positions before a meeting starts from a body report
+    public static void Prefix()
+    {
+        MinimapHandler.SnapshotHerePointPositions();
+    }
+}
+
+[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CmdReportDeadBody))]
+public static class PlayerControl_CmdReportDeadBody
+{
+    // Prefix patch to snapshot minimap positions before a report RPC starts a meeting
+    public static void Prefix()
+    {
+        MinimapHandler.SnapshotHerePointPositions();
+    }
+}
+
+[HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.RpcStartMeeting))]
+public static class PlayerControl_RpcStartMeeting
+{
+    // Prefix patch to snapshot minimap positions before a manually called meeting starts
+    public static void Prefix()
+    {
+        MinimapHandler.SnapshotHerePointPositions();
+    }
+}
+
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CmdCheckMurder))]
 public static class PlayerControl_CmdCheckMurder
 {

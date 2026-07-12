@@ -35,8 +35,14 @@ public static class MapBehaviour_ShowNormalMap
             if (!player.AmOwner) // LocalPlayer is always treated normally
             {
                 var herePoint = UnityEngine.Object.Instantiate(__instance.HerePoint, __instance.HerePoint.transform.parent);
+                herePoint.transform.localPosition = MinimapHandler.GetCachedHerePointLocalPosition(player);
 
-                temp.Add(new HerePoint(player, herePoint));
+                var herePointWrapper = new HerePoint(player, herePoint)
+                {
+                    lastKnownLocalPosition = herePoint.transform.localPosition
+                };
+
+                temp.Add(herePointWrapper);
             }
         }
         MinimapHandler.herePoints = temp;

@@ -5,6 +5,7 @@ public class HerePoint
 {
     public PlayerControl player;
     public SpriteRenderer sprite;
+    public Vector3 lastKnownLocalPosition;
 
     public HerePoint(PlayerControl player, SpriteRenderer sprite)
     {

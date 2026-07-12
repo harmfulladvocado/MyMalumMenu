@@ -44,6 +44,7 @@ public struct CheatToggles
     public static bool seeRoles;
     public static bool seePlayerInfo;
     public static bool seeDisguises;
+    public static bool pauseEspDuringMeetings;
     public static bool taskArrows;
     public static bool revealVotes;
     public static bool seeLobbyInfo;

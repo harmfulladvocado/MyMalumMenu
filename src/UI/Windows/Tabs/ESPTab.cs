@@ -43,6 +43,8 @@ public class ESPTab : ITab
 
         CheatToggles.noShadows = GUILayout.Toggle(CheatToggles.noShadows, " No Shadows");
 
+        CheatToggles.pauseEspDuringMeetings = GUILayout.Toggle(CheatToggles.pauseEspDuringMeetings, " Pause During Meetings");
+
         CheatToggles.taskArrows = GUILayout.Toggle(CheatToggles.taskArrows, " Task Arrows");
 
         CheatToggles.revealVotes = GUILayout.Toggle(CheatToggles.revealVotes, " Reveal Votes");

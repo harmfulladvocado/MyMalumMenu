@@ -9,6 +9,8 @@ public static class TracersHandler
     {
         try
         {
+            if (CheatToggles.pauseEspDuringMeetings && Utils.isMeeting) return;
+
             var color = Color.clear; // All tracers are invisible by default
 
             if (!playerPhysics.myPlayer.Data.IsDead)
@@ -57,6 +59,8 @@ public static class TracersHandler
     // Draws a tracer LocalPlayer to a dead body. Only draws tracers for unreported dead bodies.
     public static void DrawBodyTracer(DeadBody deadBody)
     {
+        if (CheatToggles.pauseEspDuringMeetings && Utils.isMeeting) return;
+
         var color = Color.clear; // All tracers are invisible by default
 
         if (CheatToggles.tracersBodies)
