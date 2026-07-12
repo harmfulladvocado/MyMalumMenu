@@ -44,7 +44,6 @@ public static class MinimapHandler
 
     public static void HandleHerePoint(HerePoint herePoint)
     {
-        // Skip the local player — the game handles their own "YOU ARE HERE" dot natively
         if (herePoint.player.AmOwner) return;
 
         var pauseEspDuringMeeting = CheatToggles.pauseEspDuringMeetings && Utils.isMeeting;
@@ -55,9 +54,9 @@ public static class MinimapHandler
         }
 
         bool shouldShow = false;
-        Color herePointColor = Palette.White; // Safe default — won't be used unless shouldShow is true
+        Color herePointColor = Palette.White;
 
-        try // try-catch to fix issues caused by player disconnection
+        try
         {
             // Crewmate, alive
             if (CheatToggles.mapCrew && !herePoint.player.Data.Role.IsImpostor && !herePoint.player.Data.IsDead)
@@ -76,7 +75,7 @@ public static class MinimapHandler
                     : herePoint.player.Data.Role.TeamColor; // Role-Based Icon
             }
 
-            // Any Role, dead (runs independently — a dead impostor can also be a ghost)
+            // Any Role, dead
             if (CheatToggles.mapGhosts && herePoint.player.Data.IsDead)
             {
                 shouldShow = true;
